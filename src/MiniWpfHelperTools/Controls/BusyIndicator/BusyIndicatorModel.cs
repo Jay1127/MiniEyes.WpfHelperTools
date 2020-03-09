@@ -36,7 +36,7 @@ namespace MiniWpfHelperTools
             get => _isShown;
             set
             {
-                bool requestClose = _isShown && !value;
+                bool requestClose = _isShown && (value == false);
 
                 _isShown = value;
 
@@ -47,22 +47,19 @@ namespace MiniWpfHelperTools
             }
         }
 
+        public bool IsModal { get; set; }
+
         public ICommand CancelCommand { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public event EventHandler RequestClose;
 
-        public BusyIndicatorModel(
-                    string title = "",
-                    string content = "",
-                    bool isIndeterminate = true,
-                    double minValue = 0,
-                    double maxValue = 100,
-                    double value = 0)
+        public BusyIndicatorModel(string title = "", string content = "")
         {
             Title = title;
             Message = content;
             IsShown = false;
+            IsModal = true;
         }
 
         private void NotifyPropertyChanged([CallerMemberName]string propertyName = "")

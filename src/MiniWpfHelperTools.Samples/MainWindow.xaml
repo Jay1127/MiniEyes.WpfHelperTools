@@ -15,7 +15,10 @@
                 <local:ColorPickerSamplePage />
             </TabItem>
             <TabItem Header="Extensions">
-                <local:ExtensionSamplePages />
+                <local:ExtensionSamplePage />
+            </TabItem>
+            <TabItem Header="Dialog">
+                <local:DialogSamplePage />
             </TabItem>
         </TabControl>
     </Grid>

@@ -33,7 +33,7 @@ namespace MiniWpfHelperTools
 
         private void OnCancelButtonClicked(object sender, RoutedEventArgs e)
         {
-            Close();
+            Close();            
         }
     }
 }

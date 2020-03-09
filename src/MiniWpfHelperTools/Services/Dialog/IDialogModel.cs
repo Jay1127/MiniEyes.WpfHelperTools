@@ -10,6 +10,8 @@ namespace MiniWpfHelperTools
 
         bool IsShown { get; set; }
 
+        bool IsModal { get; set; }
+
         event EventHandler RequestClose;
     }
 }

@@ -13,6 +13,8 @@ namespace MiniWpfHelperTools
 
         void Show();
 
+        bool? ShowDialog();
+
         void Close();
     }
 }

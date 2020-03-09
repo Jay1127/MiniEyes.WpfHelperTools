@@ -67,7 +67,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ExtensionSamplePages.xaml">
+    <Page Include="DialogSamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExtensionSamplePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -86,8 +90,11 @@
       <DependentUpon>ColorPickerSamplePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ColorPickerViewModel.cs" />
-    <Compile Include="ExtensionSamplePages.xaml.cs">
-      <DependentUpon>ExtensionSamplePages.xaml</DependentUpon>
+    <Compile Include="DialogSamplePage.xaml.cs">
+      <DependentUpon>DialogSamplePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExtensionSamplePage.xaml.cs">
+      <DependentUpon>ExtensionSamplePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

@@ -11,18 +11,31 @@ namespace MiniWpfHelperTools
 
         }
 
-        public async void ShowDialog<T>(IDialogModel model, Action closed = null) where T : IDialogWindow, new()
+        public void ShowDialog<T>(IDialogModel model, Action closed = null) where T : IDialogWindow, new()
         {
             IDialogWindow dialog = CreateDialog<T>(model, closed);
 
-            await ShowDialog(dialog);
+            if (model.IsModal)
+            {
+                dialog.ShowDialog();
+            }
+            else
+            {
+                dialog.Show();
+            }
         }
 
-        public void ShowDialogAsync<T>(IDialogModel model, Action closed = null) where T : IDialogWindow, new()
+        public async void ShowDialogAsync<T>(IDialogModel model, Action closed = null) where T : IDialogWindow, new()
         {
             IDialogWindow dialog = CreateDialog<T>(model, closed);
-
-            dialog.Show();
+            if (model.IsModal)
+            {
+                await ShowModalDialog(dialog);
+            }
+            else
+            {
+                await ShowModalessDialog(dialog);
+            }
         }
 
         private IDialogWindow CreateDialog<T>(IDialogModel model, Action closed) where T : IDialogWindow, new()
@@ -43,11 +56,19 @@ namespace MiniWpfHelperTools
             return dialog;
         }
 
-        private async Task ShowDialog(IDialogWindow dialog)
+        private async Task ShowModalessDialog(IDialogWindow dialog)
         {
             await Application.Current.Dispatcher.InvokeAsync(() =>
             {
                 dialog.Show();
+            });
+        }
+
+        private async Task ShowModalDialog(IDialogWindow dialog)
+        {
+            await Application.Current.Dispatcher.InvokeAsync(() =>
+            {
+                dialog.ShowDialog();
             });
         }
     }
