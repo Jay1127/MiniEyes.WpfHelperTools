@@ -1,0 +1,92 @@
+﻿<UserControl x:Class="MiniEyes.WpfHelperTools.ColorPickerSamplePage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:MiniEyes.WpfHelperTools"
+             xmlns:mwht="clr-namespace:MiniEyes.WpfHelperTools;assembly=MiniEyes.WpfHelperTools"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             Background="White">
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="{x:Type TextBlock}">
+                <Setter Property="Margin"
+                        Value="0,1,10,0" />
+                <Setter Property="Height"
+                        Value="18" />
+                <Setter Property="Padding"
+                        Value="0,1,0,0" />
+                <Setter Property="HorizontalAlignment"
+                        Value="Right" />
+            </Style>
+            <Style TargetType="{x:Type TextBox}">
+                <Setter Property="Margin"
+                        Value="0,1,0,0" />
+                <Setter Property="Height"
+                        Value="18" />
+                <Setter Property="VerticalContentAlignment"
+                        Value="Center" />
+            </Style>
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="150" />
+        </Grid.ColumnDefinitions>
+
+        <mwht:MiniColorPicker Color="{Binding RGB}" HSB="{Binding HSB}"/>
+
+        <StackPanel Grid.Column="1">
+            <GroupBox Header="RGB"
+                      Height="100">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel>
+                        <TextBlock Text="R" />
+                        <TextBlock Text="G" />
+                        <TextBlock Text="B" />
+                    </StackPanel>
+                    <StackPanel Grid.Column="1"
+                                DataContext="{Binding RGB}">
+                        <TextBox Text="{Binding R}" />
+                        <TextBox Text="{Binding G}" />
+                        <TextBox Text="{Binding B}" />
+                    </StackPanel>
+                </Grid>
+            </GroupBox>
+
+            <GroupBox Header="HSB"
+                      Height="100">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel>
+                        <TextBlock Text="H" />
+                        <TextBlock Text="S" />
+                        <TextBlock Text="B" />
+                    </StackPanel>
+                    <StackPanel Grid.Column="1"
+                                DataContext="{Binding HSB}">
+                        <TextBox Text="{Binding Hue}" />
+                        <TextBox Text="{Binding Saturation}" />
+                        <TextBox Text="{Binding Brightness}" />
+                    </StackPanel>
+                </Grid>
+            </GroupBox>
+
+            <Border Background="{Binding Color}"
+                    Width="40"
+                    Height="20"
+                    HorizontalAlignment="Left"
+                    Margin="10,10,0,0" />
+        </StackPanel>
+    </Grid>
+</UserControl>

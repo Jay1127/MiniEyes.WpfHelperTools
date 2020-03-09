@@ -1,0 +1,96 @@
+﻿<Control x:Class="MiniEyes.WpfHelperTools.MiniColorPicker"
+         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+         xmlns:local="clr-namespace:MiniEyes.WpfHelperTools"
+         mc:Ignorable="d"
+         d:DesignHeight="450"
+         d:DesignWidth="800">
+    <Control.Resources>
+        <local:HsbToLinearGradientConverter x:Key="HsbToLinearGradientConverter" />
+        <LinearGradientBrush x:Key="HueLayerBrush"
+                             EndPoint="0,1"
+                             StartPoint="0,0">
+            <GradientStop Color="#FFFF0000"
+                          Offset="0" />
+            <GradientStop Color="#FFFFFF00"
+                          Offset="0.167" />
+            <GradientStop Color="#FF00FF00"
+                          Offset="0.333" />
+            <GradientStop Color="#FF00FFFF"
+                          Offset="0.5" />
+            <GradientStop Color="#FF0000FF"
+                          Offset="0.667" />
+            <GradientStop Color="#FFFF00FF"
+                          Offset="0.833" />
+            <GradientStop Color="#FFFF0000"
+                          Offset="1" />
+        </LinearGradientBrush>
+    </Control.Resources>
+    <Control.Template>
+        <ControlTemplate TargetType="{x:Type Control}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="25" />
+                </Grid.ColumnDefinitions>
+
+                <Rectangle>
+                    <Rectangle.Fill>
+                        <LinearGradientBrush EndPoint="1,0"
+                                             StartPoint="0,0">
+                            <GradientStop Color="#FFFFFFFF"
+                                          Offset="0" />
+                            <GradientStop Color="{Binding HSB.Hue, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource HsbToLinearGradientConverter}}"
+                                          Offset="1" />
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Rectangle Fill="Black">
+                    <Rectangle.OpacityMask>
+                        <LinearGradientBrush StartPoint="0,0"
+                                             EndPoint="0,1">
+                            <GradientStop Offset="0"
+                                          Color="Transparent" />
+                            <GradientStop Offset="1.0"
+                                          Color="Black" />
+                        </LinearGradientBrush>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+
+                <Canvas x:Name="SBHost"
+                        Background="Transparent">
+                    <Thumb x:Name="SBPicker"
+                           Width="20"
+                           Height="20"
+                           Margin="-10">
+                        <Thumb.Template>
+                            <ControlTemplate>
+                                <Grid>
+                                    <Ellipse Stroke="White"
+                                             StrokeThickness="2" />
+                                    <Ellipse Stroke="Black"
+                                             StrokeThickness="1" />
+                                </Grid>
+                            </ControlTemplate>
+                        </Thumb.Template>
+                    </Thumb>
+                </Canvas>
+
+                <Canvas x:Name="HueHost"
+                        Background="{StaticResource HueLayerBrush}"
+                        Grid.Column="1">
+                    <Grid x:Name="HuePicker"
+                          Width="{Binding ActualWidth, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Canvas}}}"
+                          Margin="0,-4,0,0">
+                        <Path Fill="Black"
+                              Data="M0,0 L8,4 0,8 z M25,0 L25,8 17,4 z"
+                              Stretch="None"
+                              SnapsToDevicePixels="True" />
+                    </Grid>
+                </Canvas>
+            </Grid>
+        </ControlTemplate>
+    </Control.Template>
+</Control>
