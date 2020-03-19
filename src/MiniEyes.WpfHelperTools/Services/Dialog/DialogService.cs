@@ -11,6 +11,47 @@ namespace MiniEyes.WpfHelperTools
 
         }
 
+        public void ShowDialog<T>(object dataContext, bool isModal = false, Action closed = null) where T : Window, new()
+        {
+            T dialog = new T();
+
+            if (closed != null)
+            {
+                dialog.Closed += (s, e) => closed();
+            }
+
+            if (isModal)
+            {
+                dialog.ShowDialog();
+            }
+            else
+            {
+                dialog.Show();
+            }
+        }
+
+        public async void ShowDialogAsync<T>(object dataContext, bool isModal = false, Action closed = null) where T : Window, new()
+        {
+            T dialog = new T();
+
+            if (closed != null)
+            {
+                dialog.Closed += (s, e) => closed();
+            }
+
+            await Application.Current.Dispatcher.InvokeAsync(() =>
+            {
+                if (isModal)
+                {
+                    dialog.ShowDialog();
+                }
+                else
+                {
+                    dialog.Show();
+                }
+            });
+        }
+
         public void ShowDialog<T>(IDialogModel model, Action closed = null) where T : IDialogWindow, new()
         {
             IDialogWindow dialog = CreateDialog<T>(model, closed);

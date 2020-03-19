@@ -10,7 +10,7 @@ namespace MiniEyes.WpfHelperTools
 
         bool IsShown { get; set; }
 
-        bool IsModal { get; set; }
+        bool IsModal { get; }
 
         event EventHandler RequestClose;
     }
