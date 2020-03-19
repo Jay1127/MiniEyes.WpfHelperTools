@@ -59,9 +59,9 @@
                     </Rectangle.OpacityMask>
                 </Rectangle>
 
-                <Canvas x:Name="SBHost"
+                <Canvas x:Name="PART_SBHOST"
                         Background="Transparent">
-                    <Thumb x:Name="SBPicker"
+                    <Thumb x:Name="PART_SBPICKER"
                            Width="20"
                            Height="20"
                            Margin="-10">
@@ -78,10 +78,10 @@
                     </Thumb>
                 </Canvas>
 
-                <Canvas x:Name="HueHost"
+                <Canvas x:Name="PART_HUEHOST"
                         Background="{StaticResource HueLayerBrush}"
                         Grid.Column="1">
-                    <Grid x:Name="HuePicker"
+                    <Grid x:Name="PART_HUEPICKER"
                           Width="{Binding ActualWidth, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Canvas}}}"
                           Margin="0,-4,0,0">
                         <Path Fill="Black"

@@ -18,6 +18,10 @@ namespace MiniEyes.WpfHelperTools
     /// <summary>
     /// implement color picker
     /// </summary>
+    [TemplatePart(Name ="PART_HUEHOST",Type = typeof(Canvas))]
+    [TemplatePart(Name = "PART_HUEPICKER", Type = typeof(Canvas))]
+    [TemplatePart(Name = "PART_SBHOST", Type = typeof(Canvas))]
+    [TemplatePart(Name = "PART_SBPICKER", Type = typeof(Canvas))]
     public partial class MiniColorPicker : Control
     {
         /// <summary>
@@ -72,19 +76,29 @@ namespace MiniEyes.WpfHelperTools
         public MiniColorPicker()
         {
             InitializeComponent();
+            Loaded += MiniColorPicker_Loaded;
+        }
+
+        private void MiniColorPicker_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Color, HSB에 초기값을 설정한 경우
+            // 로드시 Picker의 위치를 해당 색상으로 이동해야 함.
+            // OnApplyTemplate에서 호출하지 않는 이유는
+            // 해당 시점에는 컨트롤의 높이값(ActualHeight)이므로 위치를 이동시킬 수 없음.
+            ChangePosition();
         }
 
         public override void OnApplyTemplate()
-        {
-            _hueHost = GetTemplateChild("HueHost") as FrameworkElement;
-            _huePicker = GetTemplateChild("HuePicker") as FrameworkElement;
+        {           
+            _hueHost = Template.FindName("PART_HUEHOST", this) as FrameworkElement;
+            _huePicker = Template.FindName("PART_HUEPICKER", this) as FrameworkElement;
 
             _hueHost.PreviewMouseLeftButtonDown += HueHost_PreviewMouseLeftButtonDown;
             _hueHost.PreviewMouseLeftButtonUp += HueHost_PreviewMouseLeftButtonUp;
             _hueHost.MouseMove += HueHost_MouseMove;
 
-            _sbHost = GetTemplateChild("SBHost") as FrameworkElement;
-            _sbPicker = GetTemplateChild("SBPicker") as FrameworkElement;
+            _sbHost = Template.FindName("PART_SBHOST", this) as FrameworkElement;
+            _sbPicker = Template.FindName("PART_SBPICKER", this) as FrameworkElement;
 
             _sbHost.MouseMove += SBHost_MouseMove;
             _sbHost.PreviewMouseLeftButtonDown += SBHost_PreviewMouseLeftButtonDown;
