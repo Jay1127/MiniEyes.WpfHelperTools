@@ -30,7 +30,7 @@ namespace MiniEyes.WpfHelperTools
             }
         }
 
-        public async void ShowDialogAsync<T>(object dataContext, bool isModal = false, Action closed = null) where T : Window, new()
+        public async Task ShowDialogAsync<T>(object dataContext, bool isModal = false, Action closed = null) where T : Window, new()
         {
             T dialog = new T();
 
@@ -66,7 +66,7 @@ namespace MiniEyes.WpfHelperTools
             }
         }
 
-        public async void ShowDialogAsync<T>(IDialogModel model, Action closed = null) where T : IDialogWindow, new()
+        public async Task ShowDialogAsync<T>(IDialogModel model, Action closed = null) where T : IDialogWindow, new()
         {
             IDialogWindow dialog = CreateDialog<T>(model, closed);
             if (model.IsModal)
