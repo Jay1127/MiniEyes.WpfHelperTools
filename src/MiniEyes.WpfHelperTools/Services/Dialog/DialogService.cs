@@ -30,7 +30,7 @@ namespace MiniEyes.WpfHelperTools
             }
         }
 
-        public async Task ShowDialogAsync<T>(object dataContext, bool isModal = false, Action closed = null) where T : Window, new()
+        public async void ShowDialogAsync<T>(object dataContext, bool isModal = false, Action closed = null) where T : Window, new()
         {
             T dialog = new T();
 
@@ -66,16 +66,16 @@ namespace MiniEyes.WpfHelperTools
             }
         }
 
-        public async Task ShowDialogAsync<T>(IDialogModel model, Action closed = null) where T : IDialogWindow, new()
+        public void ShowDialogAsync<T>(IDialogModel model, Action closed = null) where T : IDialogWindow, new()
         {
             IDialogWindow dialog = CreateDialog<T>(model, closed);
             if (model.IsModal)
             {
-                await ShowModalDialog(dialog);
+                ShowModalDialog(dialog);
             }
             else
             {
-                await ShowModalessDialog(dialog);
+                ShowModalessDialog(dialog);
             }
         }
 
@@ -97,7 +97,7 @@ namespace MiniEyes.WpfHelperTools
             return dialog;
         }
 
-        private async Task ShowModalessDialog(IDialogWindow dialog)
+        private async void ShowModalessDialog(IDialogWindow dialog)
         {
             await Application.Current.Dispatcher.InvokeAsync(() =>
             {
@@ -105,7 +105,7 @@ namespace MiniEyes.WpfHelperTools
             });
         }
 
-        private async Task ShowModalDialog(IDialogWindow dialog)
+        private async void ShowModalDialog(IDialogWindow dialog)
         {
             await Application.Current.Dispatcher.InvokeAsync(() =>
             {
