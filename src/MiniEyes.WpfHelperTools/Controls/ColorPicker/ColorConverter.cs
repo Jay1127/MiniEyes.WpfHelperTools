@@ -77,31 +77,42 @@ namespace MiniEyes.WpfHelperTools
         /// <returns></returns>
         public static HSB ToHSB(Color color)
         {
-            var r = color.R / 255;
-            var g = color.G / 255;
-            var b = color.B / 255;
+            var r = color.R / 255.0;
+            var g = color.G / 255.0;
+            var b = color.B / 255.0;
 
             var rgb = new[] { r, g, b };
 
             var min = rgb.Min();
             var max = rgb.Max();
 
-            var v = max - min; // b
+            if(max == 0)
+            {
+                return new HSB(0, 0, 0);
+            }
+
             double delta = max - min;
 
-            var s = max != 0 ? delta / max : 0;
+            if(delta == 0)
+            {
+                return new HSB(0, 0, max);
+            }
 
             var h = 0.0;
 
-            if (r == max)
-                h = (g - b) / delta;       // between yellow & magenta
-            else if (g == max)
-                h = 2 + (b - r) / delta;   // between cyan & yellow
-            else
-                h = 4 + (r - g) / delta;   // between magenta & cyan
-            h *= 60;               // degrees
-            if (h < 0)
-                h += 360;
+            if (max == r && g >= b)
+                h = 60 * (g - b) / delta;
+            else if (max == r && g < b)
+            {
+                h = 60 * (g - b) / delta + 360;
+            }
+            else if (max == g)
+                h = 60 * (b - r) / delta + 120;
+            else if(max == b)
+                h = 60 * (r - g) / delta + 240;
+
+            var s = delta / max;
+            var v = max; 
 
             return new HSB(h, s, v);
         }
