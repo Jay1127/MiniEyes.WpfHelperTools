@@ -40,5 +40,54 @@
                 </Style>
             </Button.Style>
         </Button>
+
+        <TextBlock Text="Colorful CheckBox"
+                   FontSize="15"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Margin="30,150,0,0"
+                   FontWeight="Bold" />
+
+        <StackPanel HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Margin="30,180,0,0">
+            <mwht:MiniCheckBox Content="Red"
+                               IsChecked="True"
+                               AccentColor="Red" />
+
+            <mwht:MiniCheckBox Content="Orange"
+                               IsChecked="True"
+                               AccentColor="Orange" />
+
+            <mwht:MiniCheckBox Content="Yellow"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Top"
+                               IsChecked="True"
+                               AccentColor="Yellow" />
+
+            <mwht:MiniCheckBox Content="Green"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Top"
+                               IsChecked="True"
+                               AccentColor="Green" />
+
+            <mwht:MiniCheckBox Content="Blue"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Top"
+                               IsChecked="True"
+                               AccentColor="Blue" />
+
+            <mwht:MiniCheckBox Content="Indigo"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Top"
+                               IsChecked="True"
+                               AccentColor="Navy" />
+
+            <mwht:MiniCheckBox Content="Violet"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Top"
+                               IsChecked="True"
+                               AccentColor="Violet" />
+        </StackPanel>
     </Grid>
 </UserControl>

@@ -58,7 +58,9 @@
     <Compile Include="Controls\BusyIndicator\MiniBusyIndicatorPopup.xaml.cs">
       <DependentUpon>MiniBusyIndicatorPopup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Buttons\FluentCheckBox.cs" />
     <Compile Include="Controls\Buttons\MiniButton.cs" />
+    <Compile Include="Controls\Buttons\MiniCheckBox.cs" />
     <Compile Include="Controls\ColorPicker\ColorConverter.cs" />
     <Compile Include="Controls\ColorPicker\HSB.cs" />
     <Compile Include="Controls\ColorPicker\HsbToLinearGradientConverter.cs" />

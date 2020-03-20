@@ -6,7 +6,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:MiniButton}">
                     <Grid>
-                        <Border x:Name="Boundary"
+                        <Border x:Name="PART_BOUNDARY"
                                 Width="{TemplateBinding Width}"
                                 Height="{TemplateBinding Height}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
@@ -20,12 +20,75 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver"
                                  Value="True">
-                            <Setter TargetName="Boundary"
+                            <Setter TargetName="PART_BOUNDARY"
                                     Property="Background"
                                     Value="{Binding MouseOverBackground, RelativeSource={RelativeSource TemplatedParent}}" />
-                            <Setter TargetName="Boundary"
+                            <Setter TargetName="PART_BOUNDARY"
                                     Property="BorderBrush"
                                     Value="{Binding MouseOverBorderBrush, RelativeSource={RelativeSource TemplatedParent}}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type local:MiniCheckBox}">
+        <Setter Property="Padding"
+                Value="4,0,0,0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:MiniCheckBox}">
+                    <BulletDecorator Background="Transparent"
+                                     VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                                     HorizontalAlignment="{TemplateBinding HorizontalAlignment}">
+                        <BulletDecorator.Bullet>
+                            <Grid>
+                                <Border Width="14"
+                                        Height="13"
+                                        CornerRadius="0"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        Background="{TemplateBinding Background}"
+                                        HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                        VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                                        Padding="1"
+                                        Margin="1,-1,0,0">
+                                    <Path Visibility="Visible"
+                                          x:Name="PART_ACCENT"
+                                          Width="Auto"
+                                          Height="Auto"
+                                          SnapsToDevicePixels="False"
+                                          StrokeThickness="2"
+                                          Stretch="Fill"
+                                          Stroke="{Binding AccentColor, RelativeSource={RelativeSource TemplatedParent}}">
+                                        <Path.Data>
+                                            <PathGeometry>
+                                                <PathGeometry.Figures>
+                                                    <PathFigure StartPoint="1,5">
+                                                        <PolyLineSegment Points="4.5,9, 10,0" />
+                                                    </PathFigure>
+                                                </PathGeometry.Figures>
+                                            </PathGeometry>
+                                        </Path.Data>
+                                    </Path>
+                                </Border>
+                            </Grid>
+                        </BulletDecorator.Bullet>
+                        <BulletDecorator.Child>
+                            <Border Height="16"
+                                    Padding="{TemplateBinding Padding}"
+                                    Margin="1,-1,0,0">
+                                <ContentPresenter />
+                            </Border>
+                        </BulletDecorator.Child>
+                    </BulletDecorator>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked"
+                                 Value="False">
+                            <Setter TargetName="PART_ACCENT"
+                                    Property="Visibility"
+                                    Value="Hidden" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
