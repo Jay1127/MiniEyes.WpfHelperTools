@@ -8,9 +8,10 @@ namespace MiniEyes.WpfHelperTools
     /// TreeView SelectedItem Binding Attached Properties
     /// </summary>
     public class TreeViewNodeTracker
-    {  /// <summary>
-       /// 트리뷰에서 선택한 아이템(TreeView's Selected Item)
-       /// </summary>
+    {  
+        /// <summary>
+        /// 트리뷰에서 선택한 아이템(TreeView's Selected Item)
+        /// </summary>
         public static readonly DependencyProperty SelectedNodeProperty =
             DependencyProperty.RegisterAttached("SelectedNode", typeof(object), typeof(TreeViewNodeTracker),
                 new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
