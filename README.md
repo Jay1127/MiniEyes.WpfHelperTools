@@ -1,7 +1,21 @@
 # MiniEyes.WpfHelperTools
-- MiniButton : MouseOverBackground, MouseOverBorderBrush
-- MiniCheckBox : AccentColor
-- MiniColorPicker
-- MiniBusyIndicatorPopup
-- WatermarkService
-- Etc (TreeViewNodeTracker,SelectorSyncService,MenuItemMutableCheckBehavior...)
+
+
+### Features
+
+- Extend controls(Button, CheckBox)
+- ColorPicker Control
+- Busy Indicator Popup
+- TextBox watermark service
+- extensions
+
+
+
+### Nuget
+
+https://www.nuget.org/packages/MiniEyes.WpfHelperTools/
+
+
+
+
+
