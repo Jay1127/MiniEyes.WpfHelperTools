@@ -68,6 +68,7 @@
       <DependentUpon>MiniColorPicker.xaml</DependentUpon>
     </Compile>
     <Compile Include="Extensions\MenuItemMutableCheckBehavior.cs" />
+    <Compile Include="Extensions\SelectorSyncService.cs" />
     <Compile Include="Extensions\WatermarkService.cs" />
     <Compile Include="Extensions\WatermarkAdorner.cs" />
     <Compile Include="Markup\EnumBindingSourceExtension.cs" />

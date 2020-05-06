@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Collections.Generic;
+using System.Windows.Controls;
 
 namespace MiniEyes.WpfHelperTools
 {
@@ -16,11 +17,15 @@ namespace MiniEyes.WpfHelperTools
     /// </summary>
     public partial class ExtensionSamplePage : UserControl
     {
+        public List<string> Items { get; set; }
+
         public ExtensionSamplePage()
         {
             InitializeComponent();            
 
             this.DataContext = this;
+
+            Items = new List<string>() { "A", "B", "C", "D", "E" };
         }
     }
 }

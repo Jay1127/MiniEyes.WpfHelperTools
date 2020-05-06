@@ -63,7 +63,31 @@
                            Opacity="0.5"
                            Text="Input id" />
             </wht:WatermarkService.Watermark>
-        </TextBox>        
+        </TextBox>
+
+        <StackPanel Margin="20,125,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Grid.Row="1"
+                    Orientation="Horizontal">
+            <Label Content="Selector Sync Service" />
+            <CheckBox Name="UseSyncCheckBox"
+                      VerticalAlignment="Center"/>
+        </StackPanel>
+        <ListBox ItemsSource="{Binding Items}"
+                 Grid.Row="1"
+                 Width="137"
+                 Height="100"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 Margin="24,153,0,0">
+            <ListBox.ItemTemplate>
+                <DataTemplate>                    
+                    <CheckBox Content="{Binding .}"
+                              wht:SelectorSyncService.UseSyncSelection="{Binding IsChecked, ElementName=UseSyncCheckBox}" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
     </Grid>
 </UserControl>
